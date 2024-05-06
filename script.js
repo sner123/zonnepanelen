@@ -80,10 +80,6 @@ function test() {
   }, 1000);
 
 }
-// function setSpanningStroom(BaSp, BaSt, ZoSp, ZoSt) {
-//   document.getElementById("BaSp").innerHTML = BaSp.toString();
-
-// }
 
 function setSpanningStroom2(BaSp, BaSt, ZoSp, ZoSt) {
 var table = document.getElementById("data table");
