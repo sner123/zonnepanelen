@@ -78,7 +78,7 @@ function test() {
   setTimeout(() => {
     button.classList.remove('spin');
   }, 1000);
-// test
+
 }
 
 function setSpanningStroom2(BaSp, BaSt, ZoSp, ZoSt) {
