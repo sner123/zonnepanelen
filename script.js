@@ -120,3 +120,20 @@ function setSpanningStroomPercentage(datumTijd, ZoSt, ZoSp, BaSt, BaSp, percenta
   var BaSpCell = newRow.insertCell(4);
   var percentageCell = newRow.insertCell(5);
 }
+
+function testSend(message) {
+  fetch('http://145.49.127.247:1880/aaadlander/aaad1?message=' + message, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: message })
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Success:', data);
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  });
+}
