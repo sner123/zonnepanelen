@@ -121,13 +121,13 @@ function setSpanningStroomPercentage(datumTijd, ZoSt, ZoSp, BaSt, BaSp, percenta
   var percentageCell = newRow.insertCell(5);
 }
 
-function testSend(message) {
-  fetch('http://145.49.127.247:1880/aaadlander/aaad1?message=' + message, {
+function testSend(positie_paneel) {
+  fetch('http://145.49.127.247:1880/aaadlander/aaad1?positie_paneel=' + positie_paneel, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ message: message })
+      body: JSON.stringify({ positie_paneel: positie_paneel })
   })
   .then(response => response.json())
   .then(data => {
@@ -136,4 +136,17 @@ function testSend(message) {
   .catch((error) => {
       console.error('Error:', error);
   });
+}
+
+
+let socket = new WebSocket("ws://145.49.127.247:1880/ws/aaad1");
+
+socket.addEventListener("message", (event => {
+  console.log(event.data);
+}))
+
+socket.onmessage = function(event) {
+  let message = event.data;
+
+  console.log(message);
 }

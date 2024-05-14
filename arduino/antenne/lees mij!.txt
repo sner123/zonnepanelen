@@ -1,0 +1,3 @@
+zorg ervoor dat je de library "RF24" van TMRh20 hebt geïnstalleerd!
+
+momenteel is dit script niet klaar voor gebruik!!!
