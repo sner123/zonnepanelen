@@ -109,3 +109,14 @@ BaSpanningCell.innerHTML = BaSp.toString() + " V";
 ZoStroomCell.innerHTML = ZoSt.toString() + " A";
 ZoSpanningCell.innerHTML = ZoSp.toString() + " V";
 }
+
+
+function setSpanningStroomPercentage(datumTijd, ZoSt, ZoSp, BaSt, BaSp, percentage) {
+  var newRow = table.insertRow();
+  var datumTijdCell = newRow.insertCell(0);
+  var ZoStCell = newRow.insertCell(1);
+  var ZoSpCell = newRow.insertCell(2);
+  var BaStCell = newRow.insertCell(3);
+  var BaSpCell = newRow.insertCell(4);
+  var percentageCell = newRow.insertCell(5);
+}
