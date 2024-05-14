@@ -3,20 +3,11 @@
 #include <nRF24L01.h>
 #include <printf.h>
 
-// #include "Led.h"
 #include <Arduino.h>
 
 #include <SPI.h>
 #include <nRF24L01.h>   // to handle this particular modem driver
 #include "RF24.h"       // the library which helps us to control the radio modem
-
-// #define LEDPIN 3        // Ditital pin connected to the LED.
-
-// Initialise Sensors
-
-// // Initialise Actuators
-// Led led;
-// int ledState = LOW;			              // ledState used to set the LED
 
 #define RF24_PAYLOAD_SIZE 32
 #define AAAD_ARO 1
@@ -44,13 +35,6 @@ void setup() {
   Serial.begin(9600);
   Serial.println("nRF24 Application ARO" + String(AAAD_ARO) + ", Module" + String(AAAD_MODULE) + " Started!\n");
 
-
-  // Activate sensors
-
-  // Activate actuators
-  // led.begin(LEDPIN);
-  // led.setState(ledState);
-
   // Activate Radio
   radio.begin();                  // Ativate the modem
   radio.setPALevel(RF24_PA_MIN);  // Set the PA Level low to prevent power supply related issues
@@ -74,28 +58,32 @@ void loop() {
    
     unsigned long timeStamp = millis()/1000;
     uint8_t cursor = 0;
-    // for (int iii; iii < 5; iii++) {
-    //   txData[cursor++] = iii;
-    // }
 
-    uint16_t zonnepanelenStroom = 543;
+
+    // GEEN kommagetallen toegestaan!
+    uint16_t zonnepanelenStroom = 543; // mA - milli ampère
+    uint8_t zonnepanelenSpanning = 11; // V * 10 - volt vermenigvuldigd door 10
+    uint8_t zonnepanelenVoortgang = 76; // percentage van 0 t/m 100 van hoe ver de zonnepanelen zijn uitgeklapt
+
+    uint16_t accuStroom = 1234; // mA - milli ampère
+    uint8_t accuSpanning = 93; // V * 10 - volt vermenigvuldigd door 10
+
     txData[cursor++] = zonnepanelenStroom >> 8;
     txData[cursor++] = zonnepanelenStroom;
 
-    txData[cursor++] = 11;
-    txData[cursor++] = 76;
+    txData[cursor++] = zonnepanelenSpanning;
+
+    txData[cursor++] = zonnepanelenVoortgang;
 
     
-    txData[cursor++] = 1234 >> 8;
-    txData[cursor++] = 1234;
+    txData[cursor++] = accuStroom >> 8;
+    txData[cursor++] = accuStroom;
 
-    txData[cursor++] = 93;
+    txData[cursor++] = accuSpanning;
 
 
-    // txData[cursor++] = timeStamp >> 24;
-    // txData[cursor++] = timeStamp >> 16;
-    // txData[cursor++] = timeStamp >> 8;
-    // txData[cursor++] = timeStamp;
+
+    // vult de overige plekjes van de 32 bytes met 0
     while (cursor<RF24_PAYLOAD_SIZE) {
       txData[cursor++] = 0;
     }
