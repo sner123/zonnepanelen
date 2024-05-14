@@ -31,13 +31,6 @@ newsItems.forEach(function(item) {
   newsFeed.appendChild(li);
 });
 
-function uitklappen() {
-  console.log("hallo ik doe de uit klap");
-}
-
-function inklappen() {
-  console.log("hoi ik doe de inklap");
-}
 
 function artikel() {
 
@@ -121,7 +114,7 @@ function setSpanningStroomPercentage(datumTijd, ZoSt, ZoSp, BaSt, BaSp, percenta
   var percentageCell = newRow.insertCell(5);
 }
 
-function testSend(positie_paneel) {
+function verstuurCommando(positie_paneel) {
   fetch('http://145.49.127.247:1880/aaadlander/aaad1?positie_paneel=' + positie_paneel, {
       method: 'POST',
       headers: {
