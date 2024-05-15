@@ -68,6 +68,8 @@ void loop() {
     uint16_t accuStroom = 1234; // mA - milli ampère
     uint8_t accuSpanning = 93; // V * 10 - volt vermenigvuldigd door 10
 
+
+
     txData[cursor++] = zonnepanelenStroom >> 8;
     txData[cursor++] = zonnepanelenStroom;
 
@@ -125,14 +127,12 @@ void loop() {
     }
     Serial.println();
 
-    // Switch led on Received command
-    if (rxData[0]==0xFF) {
-      Serial.println("Led=on");
-      // led.setState(HIGH);
+    // in of uitklappen
+    if (bitRead(rxData[0], 0)) {
+      Serial.println("uitklappen");
     }
-    if (rxData[0]==0x7F) {
-      Serial.println("Led=off");
-      // led.setState(LOW);
+    else if (bitRead(rxData[0], 1)) {
+      Serial.println("inklappen");
     }
   }
 
