@@ -100,7 +100,7 @@ var d = new Date();
 TijdCell.innerHTML = d.toLocaleString(); 
 BaStroomCell.innerHTML = BaSt.toString() + " A";
 BaSpanningCell.innerHTML = BaSp.toString() + " V";
-ZoStroomCell.innerHTML = ZoSt.toString() + " A";
+ZoStroomCell.innerHTML = ZoSt.toString() + " mA";
 ZoSpanningCell.innerHTML = ZoSp.toString() + " V";
 ZoVoortGangCell.innerHTML = ZoVo.toString() + "%";
 }
@@ -139,5 +139,5 @@ let socket = new WebSocket("ws://145.49.127.247:1880/ws/aaad1");
 socket.addEventListener("message", (event => {
   console.log(event.data);
   const JO = JSON.parse(event.data);
-  setSpanningStroom2( JO.accu_spanning,  JO.accu_stroom, JO.zonnepanelen_spanning, JO.zonnepanelen_stroom, JO.zonnepanelen_voortgang);
+  setSpanningStroom2( JO.accu_spanning,  JO.accu_stroom, JO.zonnepanelen_spanning.toFixed(1), JO.zonnepanelen_stroom, JO.zonnepanelen_voortgang);
 }))

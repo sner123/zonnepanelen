@@ -56,13 +56,53 @@ void loop() {
 
   if(currentMillis - previousMillis >= sampleTime) {
    
+   
     unsigned long timeStamp = millis()/1000;
     uint8_t cursor = 0;
 
 
+
+  // test sensorisch meten
+  float AcsValue = 0.0, Samples = 0.0, AvgAcs = 0.0, AcsValueF = 0.0;
+    
+    for (int x = 0; x < 150; x++) { // Verzamel 150 samples
+        AcsValue = analogRead(A0); // Lees de huidige sensorwaarde
+        Samples += AcsValue;  // Voeg samples samen
+        delay(3); // Laat ADC tot rust komen voor de volgende sample (3 ms)
+    }
+    
+    AvgAcs = Samples / 150.0; // Bereken het gemiddelde van de samples
+    
+    // Converteer de gemiddelde ADC waarde naar spanning (0-5V)
+    float Voltage = AvgAcs * (5.0 / 1024.0);
+    Voltage *= 10;
+    Serial.println(Voltage);
+    
+    
+    // Bereken de stroom in Ampère
+    // 2.5 is de offset (bij 0A output is 2.5V)
+    // 0.066V (66mV) is de stijging in uitgangsspanning bij 1A stroom
+    AcsValueF = (Voltage - 2.5) / 0.066;
+    AcsValueF *= 10;
+    Serial.println(AcsValueF);
+    // Serial.print("Sensor Voltage: ");
+    // Serial.print(Voltage);
+    // Serial.print(" V, Current: ");
+    // Serial.print(AcsValueF);
+    // Serial.println(" A"); // Druk de gemeten stroom af op de seriële monitor
+    
+    delay(100); // Wacht 100ms voor de volgende meting
+
+    float f = 123.45;  // Je hebt een float waarde
+    uint8_t u = (uint8_t)f;  // Je zet de float om naar uint8_t
+    // Serial.println(u);  // Print de waarden
+
+
+
+
     // GEEN kommagetallen toegestaan!
-    uint16_t zonnepanelenStroom = 543; // mA - milli ampère
-    uint8_t zonnepanelenSpanning = 11; // V * 10 - volt vermenigvuldigd door 10
+    uint16_t zonnepanelenStroom = (uint16_t)AcsValueF; // mA - milli ampère
+    uint8_t zonnepanelenSpanning = (uint8_t)Voltage; // V * 10 - volt vermenigvuldigd door 10
     uint8_t zonnepanelenVoortgang = 76; // percentage van 0 t/m 100 van hoe ver de zonnepanelen zijn uitgeklapt
 
     uint16_t accuStroom = 1234; // mA - milli ampère
