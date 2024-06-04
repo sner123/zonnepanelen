@@ -62,7 +62,7 @@ function artikel() {
 }
 function test() {
   setSpanningStroom2(Math.round((Math.random() * 5.0) * 10) / 10, Math.round((Math.random() * 0.1) * 1000) / 1000, 
-                     Math.round((Math.random() * 5.0) * 10) / 10, Math.round((Math.random() * 0.1) * 1000) / 1000);
+                     Math.round((Math.random() * 5.0) * 10) / 10, Math.round((Math.random() * 0.1) * 1000) / 1000, Math.round((Math.random() * 100.0) ) );
 
   const button = document.getElementById('spintest');
   button.classList.add('spin');
@@ -77,8 +77,8 @@ function test() {
 function setSpanningStroom2(BaSp, BaSt, ZoSp, ZoSt, ZoVo) {
 var table = document.getElementById("data table");
 
-var lastRow = table.rows[table.rows.length - 1];
-table.deleteRow(lastRow.rowIndex);
+// var lastRow = table.rows[table.rows.length - 1];
+// table.deleteRow(lastRow.rowIndex);
 
 
 var rows = table.getElementsByTagName("tr");
@@ -103,6 +103,10 @@ BaSpanningCell.innerHTML = BaSp.toString() + " V";
 ZoStroomCell.innerHTML = ZoSt.toString() + " mA";
 ZoSpanningCell.innerHTML = ZoSp.toString() + " V";
 ZoVoortGangCell.innerHTML = ZoVo.toString() + "%";
+
+    var elem = document.getElementById("myBar");
+    elem.style.height = ZoVo + "%";
+    document.getElementById("procent").innerHTML = ZoVo + "%"
 }
 
 
@@ -141,3 +145,4 @@ socket.addEventListener("message", (event => {
   const JO = JSON.parse(event.data);
   setSpanningStroom2( JO.accu_spanning,  JO.accu_stroom, JO.zonnepanelen_spanning.toFixed(1), JO.zonnepanelen_stroom, JO.zonnepanelen_voortgang);
 }))
+
