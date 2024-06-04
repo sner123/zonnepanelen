@@ -109,17 +109,6 @@ ZoVoortGangCell.innerHTML = ZoVo.toString() + "%";
     document.getElementById("procent").innerHTML = ZoVo + "%"
 }
 
-
-function setSpanningStroomPercentage(datumTijd, ZoSt, ZoSp, BaSt, BaSp, percentage) {
-  var newRow = table.insertRow();
-  var datumTijdCell = newRow.insertCell(0);
-  var ZoStCell = newRow.insertCell(1);
-  var ZoSpCell = newRow.insertCell(2);
-  var BaStCell = newRow.insertCell(3);
-  var BaSpCell = newRow.insertCell(4);
-  var percentageCell = newRow.insertCell(5);
-}
-
 function verstuurCommando(positie_paneel) {
   fetch('http://145.49.127.247:1880/aaadlander/aaad1?positie_paneel=' + positie_paneel, {
       method: 'POST',
