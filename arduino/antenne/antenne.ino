@@ -95,19 +95,6 @@ void loop() {
     AcsValueF = (Voltage - 2.5) / 0.066;
     AcsValueF *= 10;
     Serial.println(AcsValueF);
-    // Serial.print("Sensor Voltage: ");
-    // Serial.print(Voltage);
-    // Serial.print(" V, Current: ");
-    // Serial.print(AcsValueF);
-    // Serial.println(" A"); // Druk de gemeten stroom af op de seriële monitor
-
-    delay(100);  // Wacht 100ms voor de volgende meting
-
-    float f = 123.45;        // Je hebt een float waarde
-    uint8_t u = (uint8_t)f;  // Je zet de float om naar uint8_t
-    // Serial.println(u);  // Print de waarden
-
-
 
 
     // GEEN kommagetallen toegestaan!
