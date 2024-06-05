@@ -25,6 +25,7 @@ const int dirPin = 8;                                      // DIR+ pin
 const int stepsPerRevolution = 5;                          // Afhankelijk van je motor (meestal 200 voor een 1.8° motor)
 const int rpm = 60;                                        // Aantal omwentelingen per minuut
 const int stepDelay = 60000 / (stepsPerRevolution * rpm);  // Bereken de vertraging per stap
+float percentage = 0;
 
 // Timing configuration
 unsigned long previousMillis = 0;  // will store last time LED was updated
@@ -100,7 +101,7 @@ void loop() {
     // GEEN kommagetallen toegestaan!
     uint16_t zonnepanelenStroom = (uint16_t)AcsValueF;  // mA - milli ampère
     uint8_t zonnepanelenSpanning = (uint8_t)Voltage;    // V * 10 - volt vermenigvuldigd door 10
-    uint8_t zonnepanelenVoortgang = 76;                 // percentage van 0 t/m 100 van hoe ver de zonnepanelen zijn uitgeklapt
+    uint8_t zonnepanelenVoortgang = (uint8_t)percentage;                 // percentage van 0 t/m 100 van hoe ver de zonnepanelen zijn uitgeklapt
 
     uint16_t accuStroom = 1234;  // mA - milli ampère
     uint8_t accuSpanning = 93;   // V * 10 - volt vermenigvuldigd door 10
@@ -169,12 +170,16 @@ void loop() {
       Serial.println("uitklappen");
       // Draai de motor 12 seconden vooruit
       digitalWrite(dirPin, HIGH);  // Stel de draairichting in
+      percentage = 0;
       runMotor(18000);             // Draai de motor 12 seconden
+      percentage = 100;
     } else if (bitRead(rxData[0], 1)) {
       Serial.println("inklappen");
       // Draai de motor 12 seconden achteruit
       digitalWrite(dirPin, LOW);  // Verander de draairichting
+      percentage = 100;
       runMotor(18000);            // Draai de motor 12 seconden
+      percentage = 0;
     }
   }
 
