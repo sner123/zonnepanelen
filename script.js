@@ -1,7 +1,6 @@
 // Countdown timer
 var countDownDate = new Date("Jun 12, 2024 00:00:00").getTime();
 
-
 var x = setInterval(function() {
   var now = new Date().getTime();
   var distance = countDownDate - now;
@@ -31,9 +30,7 @@ newsItems.forEach(function(item) {
   newsFeed.appendChild(li);
 });
 
-
 function artikel() {
-
   document.getElementById('artikel').innerHTML = "Aan het schrijven... Heb geduld!"
   const AWANLLM_API_KEY = "3f8b5e11-562c-41a5-aaa8-03e48eb52ade"; // Replace "your_api_key_here" with your actual API key
 
@@ -97,7 +94,6 @@ CommandoCell.innerHTML = commando;
 function setSpanningStroom2(BaSp, BaSt, ZoSp, ZoSt, ZoVo) {
 var table = document.getElementById("data table");
 
-
 var rows = table.getElementsByTagName("tr");
 for (var i = 2; i < rows.length; i++) { 
     rows[i].classList.add("oud");
@@ -142,7 +138,6 @@ function verstuurCommando(positie_paneel) {
       console.error('Error:', error);
   });
 }
-
 
 let socket = new WebSocket("ws://145.49.127.247:1880/ws/aaad1");
 
