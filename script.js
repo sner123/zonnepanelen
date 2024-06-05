@@ -60,6 +60,7 @@ function artikel() {
   });
 
 }
+
 function test() {
   setSpanningStroom2(Math.round((Math.random() * 5.0) * 10) / 10, Math.round((Math.random() * 0.1) * 1000) / 1000, 
                      Math.round((Math.random() * 5.0) * 10) / 10, Math.round((Math.random() * 0.1) * 1000) / 1000, Math.round((Math.random() * 100.0) ) );
@@ -76,9 +77,6 @@ function test() {
 
 function setSpanningStroom2(BaSp, BaSt, ZoSp, ZoSt, ZoVo) {
 var table = document.getElementById("data table");
-
-// var lastRow = table.rows[table.rows.length - 1];
-// table.deleteRow(lastRow.rowIndex);
 
 
 var rows = table.getElementsByTagName("tr");
