@@ -56,6 +56,7 @@ text-align: center;
     max-height: 400px;
     overflow: auto;
     margin: auto;
+    min-width: 575px;
     max-width: 575px;
   }
 
@@ -97,4 +98,9 @@ text-align: center;
     font-family: monospace;
     color: rgb(255, 255, 255);
     font-size: large;
+  }
+
+  .tables {
+    display: flex;
+    justify-content: space-between; /* Verdeel de ruimte gelijkmatig tussen de tabellen */
   }

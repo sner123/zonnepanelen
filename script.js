@@ -75,6 +75,25 @@ function test() {
 
 }
 
+function setCommando(commando) {
+  var table = document.getElementById("commando table");
+
+  var rows = table.getElementsByTagName("tr");
+for (var i = 1; i < rows.length; i++) { 
+    rows[i].classList.add("oud");
+}
+
+var newRow = table.insertRow(1); 
+
+var TijdCell = newRow.insertCell(0);
+var CommandoCell = newRow.insertCell(1);
+
+var d = new Date();
+
+TijdCell.innerHTML = d.toLocaleString();   
+CommandoCell.innerHTML = commando;
+}
+
 function setSpanningStroom2(BaSp, BaSt, ZoSp, ZoSt, ZoVo) {
 var table = document.getElementById("data table");
 
