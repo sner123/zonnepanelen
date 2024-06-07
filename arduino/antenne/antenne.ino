@@ -103,8 +103,8 @@ void loop() {
     uint8_t zonnepanelenSpanning = (uint8_t)Voltage;    // V * 10 - volt vermenigvuldigd door 10
     uint8_t zonnepanelenVoortgang = (uint8_t)percentage;                 // percentage van 0 t/m 100 van hoe ver de zonnepanelen zijn uitgeklapt
 
-    uint16_t accuStroom = 1234;  // mA - milli ampère
-    uint8_t accuSpanning = 93;   // V * 10 - volt vermenigvuldigd door 10
+    uint16_t accuStroom = 500;  // mA - milli ampère
+    uint8_t accuSpanning = 90;   // V * 10 - volt vermenigvuldigd door 10
 
 
 
