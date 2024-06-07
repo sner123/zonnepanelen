@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="main.css">
   <script text="text/javascript" src="script.js" defer></script>
 </head>
+
 <body>
 
   <header>
@@ -14,7 +16,7 @@
   </header>
 
   <div class="container">
-    <button class="btn" onclick="verstuurCommando('uit'); setCommando('uitklappen')"  id="spintest">Uitklappen</button>
+    <button class="btn" onclick="verstuurCommando('uit'); setCommando('uitklappen')" id="spintest">Uitklappen</button>
     <button class="btn" onclick="verstuurCommando('in'); setCommando('inklappen')">Inklappen</button>
     <br>
     <!-- <button class="btn" onclick="test();">voeg data toe</button> -->
@@ -24,52 +26,54 @@
     <div>
       <p style="margin-bottom: 25px;">Zonnepanelen Voortgang:</p>
 
-    <div id="myProgress">
-      <div id="myBar"></div>
-    </div>
-    <p id="procent">0%</p>
+      <div id="myProgress">
+        <div id="myBar"></div>
+      </div>
+      <p id="procent">0%</p>
     </div>
     <div class="tables">
-    <div class="table">
-      <table id="data table">
-        <tr>
-          <th></th>
-          <th colspan="2">Batterij</th>
-          <th colspan="3">Zonnepanelen</th>
-        </tr>
-        <tr>
-          <th>Datum en tijd</th>
-          <th>Stroom</th>
-          <th>Spanning</th>
-          <th>Stroom</th>
-          <th>Spanning</th>
-          <th>Voortgang</th>
-        </tr>
-      </table>
+      <div class="table">
+        <table id="data table">
+          <tr>
+            <th></th>
+            <th colspan="2">Batterij</th>
+            <th colspan="3">Zonnepanelen</th>
+          </tr>
+          <tr>
+            <th>Datum en tijd</th>
+            <th>Stroom</th>
+            <th>Spanning</th>
+            <th>Stroom</th>
+            <th>Spanning</th>
+            <th>Voortgang</th>
+          </tr>
+        </table>
+      </div>
+      <div class="table">
+        <table id="commando table">
+          <tr>
+            <th>Datum en tijd</th>
+            <th>commando</th>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class="table">
-    <table id="commando table">
-      <tr>
-        <th>Datum en tijd</th>
-        <th>commando</th>
-      </tr>
-    </table>
-  </div>
-  </div>
   </div>
 
   <div class="container">
     <h2>Countdown naar de volgende ruimtemissie</h2>
     <div id="countdown"></div>
   </div>
-  
+
   <div class="container">
     <h2>Laatste Ruimte Nieuws</h2>
     <ul id="news-feed"></ul>
-    <button onclick="artikel()" class="btn">Schrijf artikel! (Niet vaker dan 10 keer per minuut want dan krijg ik problemen met de api en duurt zo 5-10 seconden)</button>
+    <button onclick="artikel()" class="btn">Schrijf artikel! (Niet vaker dan 10 keer per minuut want dan krijg ik
+      problemen met de api en duurt zo 5-10 seconden)</button>
     <h2>artikel over deze gebeurtenis:</h2>
     <p id="artikel"></p>
   </div>
 
 </body>
+
 </html>
